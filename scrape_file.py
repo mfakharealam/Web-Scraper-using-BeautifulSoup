@@ -12,7 +12,7 @@ csv_writer.writerow(['Post Headline', 'Post Summary', 'YouTube Link'])  # settin
 for article in soup.find_all('article'):
     headline = article.h2.a.text
     print(headline)
-    content_div = soup.find('div', class_='entry-content')
+    content_div = article.find('div', class_='entry-content')
     content = content_div.p.text
     print(content)
     try:
