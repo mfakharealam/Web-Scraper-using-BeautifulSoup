@@ -10,11 +10,14 @@ for article in soup.find_all('article'):
     content_div = soup.find('div', class_='entry-content')
     content = content_div.p.text
     print(content)
-    video_src = article.find('iframe', 'youtube-player')['src']  # stored like a dictionary
-    video_id = video_src.split('/')[4]
-    video_id = video_id.split('?')[0]
+    try:
+        video_src = article.find('iframe', 'youtube-player')['src']  # stored like a dictionary
+        video_id = video_src.split('/')[4]
+        video_id = video_id.split('?')[0]
 
-    # creating a youtube link
-    yt_link = f'https://youtube.com/watch?v={video_id}'
+        # creating a youtube link
+        yt_link = f'https://youtube.com/watch?v={video_id}'
+    except Exception as E:
+        yt_link = None
     print(yt_link)
     print()     # empty line
