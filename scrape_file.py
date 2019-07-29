@@ -11,4 +11,6 @@ article = soup.find('article')
 # content = content_div.p.text
 # print(content)
 video_src = article.find('iframe', 'youtube-player')['src']  # stored like a dictionary
-print(video_src)
+video_id = video_src.split('/')[4]
+video_id = video_id.split('?')[0]
+print(video_id)
