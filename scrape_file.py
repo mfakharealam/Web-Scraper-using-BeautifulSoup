@@ -13,4 +13,7 @@ article = soup.find('article')
 video_src = article.find('iframe', 'youtube-player')['src']  # stored like a dictionary
 video_id = video_src.split('/')[4]
 video_id = video_id.split('?')[0]
-print(video_id)
+
+# creating a youtube link
+yt_link = f'https://youtube.com/watch?v={video_id}'
+print(yt_link)
