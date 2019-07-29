@@ -1,15 +1,14 @@
 from bs4 import BeautifulSoup
 import requests
 
-with open('sample.html') as html_file:
-    bsoup = BeautifulSoup(html_file, 'lxml')
-
-# print(bsoup.prettify())  # indents the code
-
-# match = bsoup.title.text  # only returns the first tag relevant to 'title'
-# print(match)
-
-# using find method to find exact tag you want
-
-match = bsoup.find('div', class_='footer') # using class_ to differentiate b/w python's class and bs
-
+html_source = requests.get('https://coreyms.com').text
+soup = BeautifulSoup(html_source, 'lxml')
+# print(soup.prettify())
+article = soup.find('article')
+# headline = article.h2.a.text
+# print(headline)
+# content_div = soup.find('div', class_='entry-content')
+# content = content_div.p.text
+# print(content)
+video_src = article.find('iframe', 'youtube-player')['src']  # stored like a dictionary
+print(video_src)
